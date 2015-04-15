@@ -4,6 +4,5 @@ mono:
 install:
  - travis_retry nuget restore Sharding-pattern/ShardingTest.sln
 script:
-  - mono .nuget/nuget.exe restore Sharding-pattern/ShardingTest.sln
   - xbuild /p:Configuration=Release Sharding-pattern/ShardingTest.sln
-  - mono Sharding-pattern/bin/Release/ShardingTest.exe
+  - mono Sharding-pattern/ShardingTest/bin/Release/ShardingTest.exe
