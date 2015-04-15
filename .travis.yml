@@ -1,6 +1,5 @@
+language: csharp
 mono:
   - latest
-install:
-  - nuget restore ./Sharding pattern/ShardingTest.sln
 script:
   - xbuild /p:Configuration=Release ./Sharding pattern/ShardingTest.sln
