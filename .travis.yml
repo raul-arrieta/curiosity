@@ -2,4 +2,5 @@ language: csharp
 mono:
   - latest
 script:
-  - xbuild /p:Configuration=Release ./Sharding pattern/ShardingTest.sln
+  - xbuild /p:Configuration=Release Sharding pattern/ShardingTest.sln
+  - mono Sharding pattern/bin/Release/travis-mono-test.exe
