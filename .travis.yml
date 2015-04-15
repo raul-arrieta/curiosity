@@ -1,0 +1,8 @@
+language: csharp
+mono:
+  - latest
+install:
+ - travis_retry nuget restore Sharding-pattern/ShardingTest.sln
+script:
+  - xbuild /p:Configuration=Release Sharding-pattern/ShardingTest.sln
+  - mono Sharding-pattern/ShardingTest/bin/Release/ShardingTest.exe
