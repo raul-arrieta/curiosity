@@ -12,7 +12,6 @@ namespace SignalR_example
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
         }
     }
 }
