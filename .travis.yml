@@ -3,6 +3,8 @@ mono:
   - latest
 install:
  - travis_retry nuget restore Sharding-pattern/ShardingTest.sln
+ - travis_retry nuget restore SignalR-example/SignalR-example.sln
 script:
   - xbuild /p:Configuration=Release Sharding-pattern/ShardingTest.sln
   - mono Sharding-pattern/ShardingTest/bin/Release/ShardingTest.exe
+  - xbuild /p:Configuration=Release SignalR-example/SignalR-example.sln

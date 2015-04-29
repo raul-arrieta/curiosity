@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SignalR-example</title>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="SignalR/hubs"></script>
+    <script>
+        $(document).ready(function () {
+            // Start the hub...
+            $.connection.hub.logging = true;
+            $.connection.hub.start();
+
+            // The Server Hub begin with a lower-case letter 
+            // SignalR_Hub_Example.cs -> signalR_Hub_Example
+            var my_SignalR_Hub = $.connection.signalR_Hub_Example;
+
+            // SignalR message handler (will be triggered from "SignalR_Hub_Example.cs:sendText").
+            my_SignalR_Hub.client.receiveText = function (text) {
+                $('#SignalR-received-text').append('<p>' + text + '</p>');
+            }
+
+            // Send text to the SignalR_Hub_Example that will be fordwarded to all clients (look recevieText function).
+            var sendText = function (text) {
+                my_SignalR_Hub.server.sendText(text);
+            };
+
+            // Bind button action to trigger sendText.
+            $('#SendText').off('click').on('click', function () { sendText($('#TextValue').val()); });
+        });
+    </script>
+</head>
+<body>
+    <div id="SignalR-send-text">
+        <input type="text" id="TextValue" />
+        <button type="button" id="SendText">Test</button>
+    </div>
+    <div id="SignalR-received-text"></div>
+</body>
+</html>
